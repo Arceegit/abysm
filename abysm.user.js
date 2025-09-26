@@ -90,7 +90,7 @@
                 justify-content: center;
             ">
                 <img src="https://abysm.lat/cdn/logo-abysal.png" style="width: 20px; height: 20px; rounded full;">
-                <span>ABYSS USERSCRIPT</span>
+                <span>ABYSM USERSCRIPT</span>
             </div>
         `;
 
