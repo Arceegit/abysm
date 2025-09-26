@@ -247,7 +247,7 @@
         }
     }
 
-    window.ABYSM = {
+    window.ABYSS = {
         config: CONFIG,
         showBypassModal: showBypassModal,
         executeBypass: function() {
