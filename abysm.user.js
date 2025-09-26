@@ -46,6 +46,8 @@
 // @match        *://unlk.link/*
 // @match        *://unlocknow.net/*
 // @match        *://up-to-down.net/*
+// @updateURL    https://github.com/Arceegit/abysm/raw/refs/heads/main/abysm.user.js
+// @downloadURL  https://github.com/Arceegit/abysm/raw/refs/heads/main/abysm.user.js
 // @grant        none
 // @run-at       document-end
 // ==/UserScript==
