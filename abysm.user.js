@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         ABYSS USERSCRIPT
+// @name         ABYSM USERSCRIPT
 // @namespace    abysm.lat
 // @version      101
 // @author       abysm.lat
-// @description  adlink bypass real no fake
+// @description  adlink bypasser 
 // @icon         https://abysm.lat/cdn/logo-abysal.png
 // @match        *://6x.work/*
 // @match        *://adfoc.us/*
@@ -45,7 +45,7 @@
 // @match        *://sub4unlock.com/*
 // @match        *://unlk.link/*
 // @match        *://unlocknow.net/*
-// @match        *://up-to-down.net/*
+// @match        *://krnl.cat/checkpoint/android/v1?hwid=*
 // @updateURL    https://github.com/Arceegit/abysm/raw/refs/heads/main/abysm.user.js
 // @downloadURL  https://github.com/Arceegit/abysm/raw/refs/heads/main/abysm.user.js
 // @grant        none
