@@ -58,8 +58,7 @@
     const CONFIG = {
         baseUrl: "https://abysm.lat",
         apiKey: "YOUR-API-KEY-HERE",
-        showFloatingButton: true,
-        usePremium: false
+        showFloatingButton: true
     };
 
     console.log("[ABYSS] Initializing userscript v101");
@@ -138,7 +137,7 @@
         `;
 
         const currentUrl = window.location.href;
-        const bypassUrl = CONFIG.usePremium && CONFIG.apiKey && !CONFIG.apiKey.includes('YOUR-API-KEY')
+        const bypassUrl = CONFIG.apiKey && !CONFIG.apiKey.includes('YOUR-API-KEY')
             ? `${CONFIG.baseUrl}/userscript?url=${encodeURIComponent(currentUrl)}&apikey=${encodeURIComponent(CONFIG.apiKey)}`
             : `${CONFIG.baseUrl}/userscript?url=${encodeURIComponent(currentUrl)}`;
 
@@ -198,7 +197,7 @@
 
             <div style="margin-top: 20px; text-align: center; border-top: 1px solid #333; padding-top: 15px;">
                 <p style="margin: 0; font-size: 10px; color: #666; font-family: monospace;">
-                    ${CONFIG.usePremium && !CONFIG.apiKey.includes('YOUR-API-KEY') ? '[PREMIUM]' : '[FREE MODE - CAPTCHA REQUIRED]'}
+                    ${!CONFIG.apiKey.includes('YOUR-API-KEY') ? '[PREMIUM]' : '[FREE MODE - CAPTCHA REQUIRED]'}
                 </p>
             </div>
         `;
