@@ -178,7 +178,7 @@
                         min-width: 100px;
                     ">CANCEL</button>
 
-                    <button id="abyss-bypass" style="
+                    <button id="abysm-bypass" style="
                         background: linear-gradient(135deg, #000 0%, #fff 100%);
                         color: black;
                         border: 1px solid #fff;
@@ -247,7 +247,7 @@
         }
     }
 
-    window.ABYSS = {
+    window.ABYSM = {
         config: CONFIG,
         showBypassModal: showBypassModal,
         executeBypass: function() {
