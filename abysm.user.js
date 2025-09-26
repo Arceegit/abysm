@@ -66,7 +66,7 @@
     function createFloatingButton() {
         const button = document.createElement('div');
         button.innerHTML = `
-            <div id="abyss-floating-btn" style="
+            <div id="abysm-floating-btn" style="
                 position: fixed;
                 bottom: 20px;
                 left: 50%;
@@ -117,11 +117,11 @@
     }
 
     function showBypassModal() {
-        const existingModal = document.getElementById('abyss-modal');
+        const existingModal = document.getElementById('abysm-modal');
         if (existingModal) existingModal.remove();
 
         const modal = document.createElement('div');
-        modal.id = 'abyss-modal';
+        modal.id = 'abysm-modal';
         modal.style.cssText = `
             position: fixed;
             top: 0;
@@ -154,7 +154,7 @@
             ">
                 <div style="text-align: center; margin-bottom: 20px; border-bottom: 1px solid #666; padding-bottom: 15px;">
                     <img src="https://abysm.lat/cdn/logo-abysal.png" style="width: 40px; height: 40px; margin-bottom: 10px; rounded full;">
-                    <h3 style="margin: 0 0 5px 0; font-size: 18px; font-weight: bold; color: #ffffff;">ABYSS USERSCRIPT</h3>
+                    <h3 style="margin: 0 0 5px 0; font-size: 18px; font-weight: bold; color: #ffffff;">ABYSM USERSCRIPT</h3>
                     <p style="margin: 0; color: #ccc; font-size: 12px; font-family: monospace;">v101</p>
                 </div>
 
@@ -164,7 +164,7 @@
                 </div>
 
                 <div style="display: flex; gap: 12px; justify-content: center;">
-                    <button id="abyss-cancel" style="
+                    <button id="ABYSM-cancel" style="
                         background: linear-gradient(135deg, #666 0%, #333 100%);
                         color: white;
                         border: 1px solid #666;
@@ -201,12 +201,12 @@
             </div>
         `;
 
-        modal.querySelector('#abyss-cancel').addEventListener('click', function() {
+        modal.querySelector('#abysm-cancel').addEventListener('click', function() {
             console.log("[ABYSS] Bypass operation cancelled by user");
             modal.remove();
         });
 
-        modal.querySelector('#abyss-bypass').addEventListener('click', function() {
+        modal.querySelector('#abysm-bypass').addEventListener('click', function() {
             console.log("[ABYSS] Initiating bypass sequence");
             this.textContent = 'PROCESSING...';
             this.style.background = 'linear-gradient(135deg, #333 0%, #666 100%)';
