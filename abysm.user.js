@@ -23,10 +23,6 @@
 // @match        *://is.gd/*
 // @match        *://key.volcano.wtf/*
 // @match        *://krnl-ios.com/*
-// @match        *://link-center.net/*
-// @match        *://link-hub.net/*
-// @match        *://link-target.net/*
-// @match        *://link-to.net/*
 // @match        *://linkunlocker.com/*
 // @match        *://linkvertise.com/*
 // @match        *://lockr.so/*
