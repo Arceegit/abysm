@@ -7,7 +7,6 @@
 // @icon         https://abysm.lat/cdn/logo-abysal.png
 // @match        *://6x.work/*
 // @match        *://adfoc.us/*
-// @match        *://auth.platoboost.app/*
 // @match        *://bit.ly/*
 // @match        *://booo.st/*
 // @match        *://boost.ink/*
