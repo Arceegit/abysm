@@ -28,7 +28,6 @@
 // @match        *://lockr.so/*
 // @match        *://mboost.me/*
 // @match        *://mobile.codex.lol/*
-// @match        *://pandadevelopment.net/*
 // @match        *://paste-drop.com/*
 // @match        *://pastebin.com/*
 // @match        *://rebrand.ly/*
