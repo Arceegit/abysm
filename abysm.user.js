@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         ABYSM USERSCRIPT
 // @namespace    abysm.lat
-// @version      102
+// @version      103
 // @author       abysm.lat
-// @description  adlink bypasser, fixedluarmor
+// @description  adlink bypasser, fixed not redirecting riaal
 // @icon         https://abysm.lat/cdn/logo-abysal.png
 // @match        *://6x.work/*
 // @match        *://adfoc.us/*
@@ -68,7 +68,7 @@
     showFloatingButton: true,
   };
 
-  console.log("[ABYSS] Initializing userscript v101");
+  console.log("[ABYSS] Initializing userscript");
 
   function createFloatingButton() {
     const button = document.createElement("div");
@@ -169,7 +169,7 @@
             <div style="text-align: center; margin-bottom: 20px; border-bottom: 1px solid #666; padding-bottom: 15px;">
                 <img src="https://abysm.lat/cdn/logo-abysal.png" style="width: 40px; height: 40px; margin-bottom: 10px; border-radius: 50%;">
                 <h3 style="margin: 0 0 5px 0; font-size: 18px; font-weight: bold; color: #ffffff;">ABYSM USERSCRIPT</h3>
-                <p style="margin: 0; color: #ccc; font-size: 12px; font-family: monospace;">v101</p>
+                <p style="margin: 0; color: #ccc; font-size: 12px; font-family: monospace;">idk</p>
             </div>
 
             <div style="background: #1a1a1a; padding: 15px; border-radius: 4px; margin-bottom: 20px; border: 1px solid #333;">
@@ -261,6 +261,7 @@
         setTimeout(initializeUI, 1000);
       });
     } else {
+      checkAndRedirect();
       setTimeout(initializeUI, 1000);
     }
   }
@@ -291,5 +292,5 @@
   };
 
   init();
-  console.log("[ABYSS] UserScript v101 loaded successfully");
+  console.log("[ABYSS] UserScript loaded successfully");
 })();
