@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         ABYSM USERSCRIPT
 // @namespace    abysm.lat
-// @version      101
+// @version      102
 // @author       abysm.lat
-// @description  adlink bypasser, f**k luarmor (fixed blacklist)
+// @description  adlink bypasser, fixedluarmor
 // @icon         https://abysm.lat/cdn/logo-abysal.png
 // @match        *://6x.work/*
 // @match        *://adfoc.us/*
@@ -41,6 +41,7 @@
 // @match        *://unlk.link/*
 // @match        *://unlocknow.net/*
 // @match        *://krnl.cat/checkpoint/android/v1?hwid=*
+// @match        *://abysm.lat/*
 // @updateURL    https://github.com/Arceegit/abysm/raw/refs/heads/main/abysm.user.js
 // @downloadURL  https://github.com/Arceegit/abysm/raw/refs/heads/main/abysm.user.js
 // @grant        none
@@ -60,8 +61,6 @@
       }
     }
   }
-
-  checkAndRedirect();
 
   const CONFIG = {
     baseUrl: "https://abysm.lat",
@@ -258,6 +257,7 @@
   function init() {
     if (document.readyState === "loading") {
       document.addEventListener("DOMContentLoaded", function () {
+        checkAndRedirect();
         setTimeout(initializeUI, 1000);
       });
     } else {
