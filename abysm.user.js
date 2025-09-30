@@ -3,7 +3,7 @@
 // @namespace    abysm.lat
 // @version      101
 // @author       abysm.lat
-// @description  adlink bypasser, fixed because pedrito broke the script :pray:
+// @description  adlink bypasser, f**k luarmor (fixed blacklist)
 // @icon         https://abysm.lat/cdn/logo-abysal.png
 // @match        *://6x.work/*
 // @match        *://adfoc.us/*
@@ -14,13 +14,10 @@
 // @match        *://bst.wtf/*
 // @match        *://cuttlinks.com/*
 // @match        *://cutty.io/*
-// @match        *://cutyion.com/*
 // @match        *://cutynow.com/*
 // @match        *://cuttty.com/*
 // @match        *://direct-link.net/*
-// @match        *://deltaios-executor.com/*
 // @match        *://is.gd/*
-// @match        *://key.volcano.wtf/*
 // @match        *://krnl-ios.com/*
 // @match        *://linkunlocker.com/*
 // @match        *://linkvertise.com/*
@@ -44,26 +41,40 @@
 // @match        *://unlk.link/*
 // @match        *://unlocknow.net/*
 // @match        *://krnl.cat/checkpoint/android/v1?hwid=*
+// @match        *://abysm.lat/*
 // @updateURL    https://github.com/Arceegit/abysm/raw/refs/heads/main/abysm.user.js
 // @downloadURL  https://github.com/Arceegit/abysm/raw/refs/heads/main/abysm.user.js
 // @grant        none
 // @run-at       document-end
 // ==/UserScript==
 
-(function() {
-    'use strict';
+(function () {
+  "use strict";
 
-    const CONFIG = {
-        baseUrl: "https://abysm.lat",
-        apiKey: "YOUR-API-KEY-HERE",
-        showFloatingButton: true
-    };
+  function checkAndRedirect() {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has("abysm-redirect")) {
+      const redirectUrl = urlParams.get("abysm-redirect");
+      if (redirectUrl) {
+        console.log(`[ABYSS] Redirecting to: ${redirectUrl}`);
+        window.location.href = redirectUrl;
+      }
+    }
+  }
 
-    console.log("[ABYSS] Initializing userscript v101");
+  checkAndRedirect();
 
-    function createFloatingButton() {
-        const button = document.createElement('div');
-        button.innerHTML = `
+  const CONFIG = {
+    baseUrl: "https://abysm.lat",
+    apiKey: "YOUR-API-KEY-HERE",
+    showFloatingButton: true,
+  };
+
+  console.log("[ABYSS] Initializing userscript v101");
+
+  function createFloatingButton() {
+    const button = document.createElement("div");
+    button.innerHTML = `
             <div id="abysm-floating-btn" style="
                 position: fixed;
                 bottom: 20px;
@@ -92,35 +103,37 @@
             </div>
         `;
 
-        const buttonElement = button.firstElementChild;
+    const buttonElement = button.firstElementChild;
 
-        buttonElement.addEventListener('mouseenter', function() {
-            this.style.background = 'linear-gradient(135deg, #ffffff 0%, #666666 50%, #000000 100%)';
-            this.style.color = '#000000';
-            this.style.border = '2px solid #ffffff';
-            this.style.boxShadow = '0 6px 20px rgba(0,0,0,0.7)';
-        });
+    buttonElement.addEventListener("mouseenter", function () {
+      this.style.background =
+        "linear-gradient(135deg, #ffffff 0%, #666666 50%, #000000 100%)";
+      this.style.color = "#000000";
+      this.style.border = "2px solid #ffffff";
+      this.style.boxShadow = "0 6px 20px rgba(0,0,0,0.7)";
+    });
 
-        buttonElement.addEventListener('mouseleave', function() {
-            this.style.background = 'linear-gradient(135deg, #000000 0%, #333333 50%, #ffffff 100%)';
-            this.style.color = '#ffffff';
-            this.style.border = '2px solid #000000';
-            this.style.boxShadow = '0 4px 15px rgba(0,0,0,0.5)';
-        });
+    buttonElement.addEventListener("mouseleave", function () {
+      this.style.background =
+        "linear-gradient(135deg, #000000 0%, #333333 50%, #ffffff 100%)";
+      this.style.color = "#ffffff";
+      this.style.border = "2px solid #000000";
+      this.style.boxShadow = "0 4px 15px rgba(0,0,0,0.5)";
+    });
 
-        buttonElement.addEventListener('click', showBypassModal);
+    buttonElement.addEventListener("click", showBypassModal);
 
-        document.body.appendChild(buttonElement);
-        return buttonElement;
-    }
+    document.body.appendChild(buttonElement);
+    return buttonElement;
+  }
 
-    function showBypassModal() {
-        const existingModal = document.getElementById('abysm-modal');
-        if (existingModal) existingModal.remove();
+  function showBypassModal() {
+    const existingModal = document.getElementById("abysm-modal");
+    if (existingModal) existingModal.remove();
 
-        const modal = document.createElement('div');
-        modal.id = 'abysm-modal';
-        modal.style.cssText = `
+    const modal = document.createElement("div");
+    modal.id = "abysm-modal";
+    modal.style.cssText = `
             position: fixed;
             top: 0;
             left: 0;
@@ -134,13 +147,16 @@
             font-family: 'Courier New', monospace;
         `;
 
-        const currentUrl = window.location.href;
-        const bypassUrl = CONFIG.apiKey && !CONFIG.apiKey.includes('YOUR-API-KEY')
-            ? `${CONFIG.baseUrl}/userscript?url=${encodeURIComponent(currentUrl)}&apikey=${encodeURIComponent(CONFIG.apiKey)}`
-            : `${CONFIG.baseUrl}/userscript?url=${encodeURIComponent(currentUrl)}`;
+    const currentUrl = window.location.href;
+    const bypassUrl =
+      CONFIG.apiKey && !CONFIG.apiKey.includes("YOUR-API-KEY")
+        ? `${CONFIG.baseUrl}/userscript?url=${encodeURIComponent(
+            currentUrl
+          )}&apikey=${encodeURIComponent(CONFIG.apiKey)}`
+        : `${CONFIG.baseUrl}/userscript?url=${encodeURIComponent(currentUrl)}`;
 
-        const modalContent = document.createElement('div');
-        modalContent.style.cssText = `
+    const modalContent = document.createElement("div");
+    modalContent.style.cssText = `
             background: linear-gradient(135deg, #000000 0%, #333333 100%);
             border: 2px solid #ffffff;
             border-radius: 8px;
@@ -151,7 +167,7 @@
             box-shadow: 0 10px 30px rgba(255,255,255,0.1);
         `;
 
-        modalContent.innerHTML = `
+    modalContent.innerHTML = `
             <div style="text-align: center; margin-bottom: 20px; border-bottom: 1px solid #666; padding-bottom: 15px;">
                 <img src="https://abysm.lat/cdn/logo-abysal.png" style="width: 40px; height: 40px; margin-bottom: 10px; border-radius: 50%;">
                 <h3 style="margin: 0 0 5px 0; font-size: 18px; font-weight: bold; color: #ffffff;">ABYSM USERSCRIPT</h3>
@@ -195,77 +211,86 @@
 
             <div style="margin-top: 20px; text-align: center; border-top: 1px solid #333; padding-top: 15px;">
                 <p style="margin: 0; font-size: 10px; color: #666; font-family: monospace;">
-                    ${!CONFIG.apiKey.includes('YOUR-API-KEY') ? '[PREMIUM]' : '[FREE MODE - CAPTCHA REQUIRED]'}
+                    ${
+                      !CONFIG.apiKey.includes("YOUR-API-KEY")
+                        ? "[PREMIUM]"
+                        : "[FREE MODE - CAPTCHA REQUIRED]"
+                    }
                 </p>
             </div>
         `;
 
-        modal.appendChild(modalContent);
-        document.body.appendChild(modal);
+    modal.appendChild(modalContent);
+    document.body.appendChild(modal);
 
-        const cancelBtn = modal.querySelector('#ABYSM-cancel');
-        const bypassBtn = modal.querySelector('#abysm-bypass');
+    const cancelBtn = modal.querySelector("#ABYSM-cancel");
+    const bypassBtn = modal.querySelector("#abysm-bypass");
 
-        if (cancelBtn) {
-            cancelBtn.addEventListener('click', function() {
-                console.log("[ABYSS] Bypass operation cancelled by user");
-                modal.remove();
-            });
-        }
-
-        if (bypassBtn) {
-            bypassBtn.addEventListener('click', function() {
-                console.log("[ABYSS] Initiating bypass sequence");
-                this.textContent = 'PROCESSING...';
-                this.style.background = 'linear-gradient(135deg, #333 0%, #666 100%)';
-                this.style.color = '#ccc';
-                this.disabled = true;
-
-                setTimeout(() => {
-                    console.log("[ABYSS] Redirecting to bypass handler");
-                    window.location.href = bypassUrl;
-                }, 500);
-            });
-        }
-
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                console.log("[ABYSS] Modal closed by background click");
-                modal.remove();
-            }
-        });
+    if (cancelBtn) {
+      cancelBtn.addEventListener("click", function () {
+        console.log("[ABYSS] Bypass operation cancelled by user");
+        modal.remove();
+      });
     }
 
-    function init() {
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', function() {
-                setTimeout(initializeUI, 1000);
-            });
-        } else {
-            setTimeout(initializeUI, 1000);
-        }
+    if (bypassBtn) {
+      bypassBtn.addEventListener("click", function () {
+        console.log("[ABYSS] Initiating bypass sequence");
+        this.textContent = "PROCESSING...";
+        this.style.background = "linear-gradient(135deg, #333 0%, #666 100%)";
+        this.style.color = "#ccc";
+        this.disabled = true;
+
+        setTimeout(() => {
+          console.log("[ABYSS] Redirecting to bypass handler");
+          window.location.href = bypassUrl;
+        }, 500);
+      });
     }
 
-    function initializeUI() {
-        if (CONFIG.showFloatingButton) {
-            createFloatingButton();
-            console.log("[ABYSS] Floating button initialized");
-        }
+    modal.addEventListener("click", function (e) {
+      if (e.target === modal) {
+        console.log("[ABYSS] Modal closed by background click");
+        modal.remove();
+      }
+    });
+  }
+
+  function init() {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(initializeUI, 1000);
+      });
+    } else {
+      setTimeout(initializeUI, 1000);
     }
+  }
 
-    window.ABYSS = {
-        config: CONFIG,
-        showBypassModal: showBypassModal,
-        executeBypass: function() {
-            const currentUrl = window.location.href;
-            const bypassUrl = CONFIG.apiKey && !CONFIG.apiKey.includes('YOUR-API-KEY')
-                ? `${CONFIG.baseUrl}/userscript?url=${encodeURIComponent(currentUrl)}&apikey=${encodeURIComponent(CONFIG.apiKey)}`
-                : `${CONFIG.baseUrl}/userscript?url=${encodeURIComponent(currentUrl)}`;
-            console.log("[ABYSS] Programmatic bypass execution");
-            window.location.href = bypassUrl;
-        }
-    };
+  function initializeUI() {
+    if (CONFIG.showFloatingButton) {
+      createFloatingButton();
+      console.log("[ABYSS] Floating button initialized");
+    }
+  }
 
-    init();
-    console.log("[ABYSS] UserScript v101 loaded successfully");
+  window.ABYSS = {
+    config: CONFIG,
+    showBypassModal: showBypassModal,
+    executeBypass: function () {
+      const currentUrl = window.location.href;
+      const bypassUrl =
+        CONFIG.apiKey && !CONFIG.apiKey.includes("YOUR-API-KEY")
+          ? `${CONFIG.baseUrl}/userscript?url=${encodeURIComponent(
+              currentUrl
+            )}&apikey=${encodeURIComponent(CONFIG.apiKey)}`
+          : `${CONFIG.baseUrl}/userscript?url=${encodeURIComponent(
+              currentUrl
+            )}`;
+      console.log("[ABYSS] Programmatic bypass execution");
+      window.location.href = bypassUrl;
+    },
+  };
+
+  init();
+  console.log("[ABYSS] UserScript v101 loaded successfully");
 })();
