@@ -41,7 +41,6 @@
 // @match        *://unlk.link/*
 // @match        *://unlocknow.net/*
 // @match        *://krnl.cat/checkpoint/android/v1?hwid=*
-// @match        *://abysm.lat/*
 // @updateURL    https://github.com/Arceegit/abysm/raw/refs/heads/main/abysm.user.js
 // @downloadURL  https://github.com/Arceegit/abysm/raw/refs/heads/main/abysm.user.js
 // @grant        none
